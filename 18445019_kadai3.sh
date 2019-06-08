@@ -1,27 +1,25 @@
 #!/bin/sh
 
-echo -n "１番目の数字を入力してください"
-read m
-echo -n "２番目の数字を入力してください"
-read n
-
-if [ $m = $n ]; then
+if [ $# -ne 2 ]; then
+	echo "終了：引数を２つ入力してください"
+	exit 1
+elif [ $1 -eq $2 ]; then
 	echo "終了：異なる数字を入力してください"
 	exit 1
-elif [ $n -gt $m]; then
-	$a = $n
-	$b = $m
+elif [ $1 -lt $2 ]; then
+	a=$2
+	b=$1
 else
-	$a = $m
-	$b = $n
+	a=$1
+	b=$2
 fi
 
-$r = $a % $b
-while [ $r != 0 ]
+r=$((a%b))
+while [ $r -ne 0 ]
 do
-	$a = $b
-	$b = $r
-	$r = $a % $b
+	a=$b
+	b=$r
+	r=$((a%b))
 done
 
 echo "最大公約数は、$b です"
