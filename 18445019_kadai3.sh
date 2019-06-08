@@ -1,10 +1,14 @@
 #!/bin/sh
 
 if [ $# -ne 2 ]; then
-	echo "終了：引数を２つ入力してください"
+	result="エラー"
+	msg="引数を２つ入力してください"
+	echo $result ; echo $msg
 	exit 1
 elif [ $1 -eq $2 ]; then
-	echo "終了：異なる数字を入力してください"
+	result="エラー"
+	msg="異なる数字を入力してください"
+	echo $result ; echo $msg 
 	exit 1
 elif [ $1 -lt $2 ]; then
 	a=$2
@@ -22,7 +26,9 @@ do
 	r=$((a%b))
 done
 
-echo "最大公約数は、$b です"
+result="正常終了"
+msg="最大公約数は、$b です"
+echo $result ; echo $msg
 
 exit 0
 
